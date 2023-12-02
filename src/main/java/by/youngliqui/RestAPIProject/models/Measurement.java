@@ -17,13 +17,11 @@ public class Measurement {
     private int id;
 
     @Column(name = "value")
-    @NotEmpty(message = "Value should not be empty")
     @Min(value = -100, message = "Value should be greater than -100")
     @Max(value = 100)
-    private double value;
+    private float value;
 
     @Column(name = "raining")
-    @NotEmpty(message = "Value should not be empty")
     private boolean raining;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -42,9 +40,15 @@ public class Measurement {
     public Measurement() {
     }
 
-    public Measurement(double value, boolean raining) {
+    public Measurement(float value, boolean raining) {
         this.value = value;
         this.raining = raining;
+    }
+
+    public Measurement(float value, boolean raining, Sensor sensor) {
+        this.value = value;
+        this.raining = raining;
+        this.sensor = sensor;
     }
 
     public int getId() {
@@ -55,11 +59,11 @@ public class Measurement {
         this.id = id;
     }
 
-    public double getValue() {
+    public float getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(float value) {
         this.value = value;
     }
 

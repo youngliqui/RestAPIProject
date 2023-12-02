@@ -7,20 +7,20 @@ import jakarta.validation.constraints.NotEmpty;
 
 public class MeasurementDTO {
 
-    @NotEmpty(message = "Value should not be empty")
     @Min(value = -100, message = "Value should be greater than -100")
     @Max(value = 100)
-    private double value;
+    private float value;
 
-    @NotEmpty(message = "Value should not be empty")
     private boolean raining;
-    private Sensor sensor;
 
-    public double getValue() {
+    //@NotEmpty(message = "Sensor should not be empty")
+    private SensorDTO sensor;
+
+    public float getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(float value) {
         this.value = value;
     }
 
@@ -32,11 +32,11 @@ public class MeasurementDTO {
         this.raining = raining;
     }
 
-    public Sensor getSensor() {
+    public SensorDTO getSensor() {
         return sensor;
     }
 
-    public void setSensor(Sensor sensor) {
+    public void setSensor(SensorDTO sensor) {
         this.sensor = sensor;
     }
 }
