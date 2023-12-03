@@ -1,33 +1,34 @@
 package by.youngliqui.RestAPIProject.dto;
 
-import by.youngliqui.RestAPIProject.models.Sensor;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 public class MeasurementDTO {
 
     @Min(value = -100, message = "Value should be greater than -100")
     @Max(value = 100)
-    private float value;
+    @NotNull
+    private Float value;
 
-    private boolean raining;
+    @NotNull
+    private Boolean raining;
 
     private SensorDTO sensor;
 
-    public float getValue() {
+    public Float getValue() {
         return value;
     }
 
-    public void setValue(float value) {
+    public void setValue(Float value) {
         this.value = value;
     }
 
-    public boolean isRaining() {
+    public Boolean isRaining() {
         return raining;
     }
 
-    public void setRaining(boolean raining) {
+    public void setRaining(Boolean raining) {
         this.raining = raining;
     }
 

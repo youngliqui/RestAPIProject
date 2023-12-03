@@ -1,6 +1,7 @@
 package by.youngliqui.RestAPIProject.controllers;
 
 import by.youngliqui.RestAPIProject.dto.MeasurementDTO;
+import by.youngliqui.RestAPIProject.dto.MeasurementsResponse;
 import by.youngliqui.RestAPIProject.models.Measurement;
 import by.youngliqui.RestAPIProject.services.MeasurementsService;
 import by.youngliqui.RestAPIProject.utils.*;
@@ -57,10 +58,10 @@ public class MeasurementsController {
     }
 
     @GetMapping
-    public List<MeasurementDTO> getMeasurements() {
-        return measurementsService.findAll().stream()
+    public MeasurementsResponse getMeasurements() {
+        return new MeasurementsResponse(measurementsService.findAll().stream()
                 .map(this::convertToMeasurementDTO)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     @GetMapping("/rainyDaysCount")

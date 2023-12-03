@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
@@ -19,10 +20,12 @@ public class Measurement {
     @Column(name = "value")
     @Min(value = -100, message = "Value should be greater than -100")
     @Max(value = 100)
-    private float value;
+    @NotNull
+    private Float value;
 
+    @NotNull
     @Column(name = "raining")
-    private boolean raining;
+    private Boolean raining;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
@@ -59,19 +62,19 @@ public class Measurement {
         this.id = id;
     }
 
-    public float getValue() {
+    public Float getValue() {
         return value;
     }
 
-    public void setValue(float value) {
+    public void setValue(Float value) {
         this.value = value;
     }
 
-    public boolean isRaining() {
+    public Boolean getRaining() {
         return raining;
     }
 
-    public void setRaining(boolean raining) {
+    public void setRaining(Boolean raining) {
         this.raining = raining;
     }
 
