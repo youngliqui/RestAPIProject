@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,6 +20,14 @@ public class MeasurementsService {
     public MeasurementsService(MeasurementRepository measurementRepository, SensorRepository sensorRepository) {
         this.measurementRepository = measurementRepository;
         this.sensorRepository = sensorRepository;
+    }
+
+    public List<Measurement> findAll() {
+        return measurementRepository.findAll();
+    }
+
+    public int getRainyCount() {
+        return measurementRepository.countMeasurementsByRaining(true);
     }
 
     public Optional<Sensor> findSensorByName(String name) {

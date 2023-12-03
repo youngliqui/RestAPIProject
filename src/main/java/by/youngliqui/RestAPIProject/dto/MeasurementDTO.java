@@ -13,7 +13,6 @@ public class MeasurementDTO {
 
     private boolean raining;
 
-    //@NotEmpty(message = "Sensor should not be empty")
     private SensorDTO sensor;
 
     public float getValue() {

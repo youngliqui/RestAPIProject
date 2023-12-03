@@ -14,6 +14,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/measurements")
@@ -53,6 +54,18 @@ public class MeasurementsController {
         measurementsService.save(measurement);
 
         return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @GetMapping
+    public List<MeasurementDTO> getMeasurements() {
+        return measurementsService.findAll().stream()
+                .map(this::convertToMeasurementDTO)
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/rainyDaysCount")
+    public int getRainyDaysCount() {
+        return measurementsService.getRainyCount();
     }
 
     @ExceptionHandler
